@@ -1,5 +1,5 @@
 <template>
-  <router-view />
+  <div>day1</div>
 </template>
 
 <script setup lang="ts"></script>
