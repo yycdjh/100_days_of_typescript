@@ -13,6 +13,12 @@ export const constantRoutes = [
         name: "day1",
         meta: {},
       },
+      {
+        path: "/day2",
+        component: () => import("@/views/Day2/index.vue"),
+        name: "day2",
+        meta: {},
+      },
     ],
   },
   {
