@@ -1,5 +1,5 @@
 <template>
-  <div>day1</div>
+  <div class="h-full bg-green-100"></div>
 </template>
 
 <script setup lang="ts"></script>

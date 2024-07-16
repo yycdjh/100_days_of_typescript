@@ -1,9 +1,9 @@
 <template>
   <div class="flex w-full h-full">
-    <div class="bg-blue-100" style="width: 200px">
+    <div style="width: 200px">
       <Sidebar />
     </div>
-    <div class="flex-1 bg-green-100">
+    <div class="flex-1">
       <AppMain />
     </div>
   </div>
