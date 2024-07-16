@@ -1,3 +1,6 @@
+import { mapMenusToRotes } from "@/utils/map-menus";
+
+const customRotues = mapMenusToRotes();
 // 对外暴露配置路由
 export const constantRoutes = [
   {
@@ -6,20 +9,7 @@ export const constantRoutes = [
     name: "layout",
     meta: {},
     redirect: "/day1",
-    children: [
-      {
-        path: "/day1",
-        component: () => import("@/views/Day1/index.vue"),
-        name: "day1",
-        meta: {},
-      },
-      {
-        path: "/day2",
-        component: () => import("@/views/Day2/index.vue"),
-        name: "day2",
-        meta: {},
-      },
-    ],
+    children: [...customRotues],
   },
   {
     path: "/404",
