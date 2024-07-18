@@ -1,6 +1,6 @@
 <template>
   <div class="h-full flex items-center justify-center bg-green-100">
-    <div class="flex w-3/4 bg-white">
+    <div class="flex flex-col w-3/4 bg-white">
       <div class="flex w-full">
         <div class="w-1/2">
           <div class="mt-3 ml-3">Grid Width</div>
@@ -17,7 +17,13 @@
           </div>
         </div>
       </div>
-      <div></div>
+      <div class="flex">
+        <el-button>Create Grid</el-button>
+        <el-button>Clear Grid</el-button>
+        <input type="color" />
+        <el-button>Erase</el-button>
+        <el-button>Paint</el-button>
+      </div>
     </div>
   </div>
 </template>
