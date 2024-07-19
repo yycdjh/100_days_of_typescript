@@ -17,22 +17,23 @@
           </div>
         </div>
       </div>
-      <div class="flex">
-        <el-button>Create Grid</el-button>
-        <el-button>Clear Grid</el-button>
-        <input type="color" />
-        <el-button>Erase</el-button>
-        <el-button>Paint</el-button>
+      <div class="flex items-center justify-center">
+        <el-button class="flex-1 m-10">Create Grid</el-button>
+        <el-button class="flex-1 m-10">Clear Grid</el-button>
+        <input class="flex-1 m-10" type="color" v-model="colorValue" />
+        <span>{{ colorValue }}</span>
+        <el-button class="flex-1 m-10">Erase</el-button>
+        <el-button class="flex-1 m-10">Paint</el-button>
       </div>
     </div>
+    <div></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { usePainting } from "./usePainting";
 
-const gridWidth = ref(0);
-const gridHeight = ref(0);
+const { gridWidth, gridHeight, colorValue } = usePainting();
 </script>
 
 <style scoped></style>
