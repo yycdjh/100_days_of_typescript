@@ -26,7 +26,9 @@
         <el-button class="flex-1 m-10">Paint</el-button>
       </div>
     </div>
-    <div></div>
+    <div>
+      <template v-for="i in gridWidth"></template>
+    </div>
   </div>
 </template>
 
