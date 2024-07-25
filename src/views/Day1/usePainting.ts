@@ -22,31 +22,59 @@ export function usePainting() {
   const isCreateGrid = ref(false);
 
   function createGrid() {
-    isCreateGrid.value = true;
+    const container = document.getElementById("grid-container");
     nextTick(() => {
-      for (let i = 1; i < gridHeight.value; i++) {
-        for (let j = 1; j < gridWidth.value; j++) {
+      if (container) {
+        for (let i = 1; i <= gridHeight.value; i++) {
+          let div = document.createElement("div");
+          div.classList.add("gridRow", "flex");
+          for (let j = 1; j <= gridWidth.value; j++) {
+            const grid = document.createElement("div");
+            grid.id = `grid-${i}-${j}`;
+            grid.classList.add(
+              "gridCol",
+              "flex",
+              "w-4",
+              "h-4",
+              "border",
+              "border-gray-300"
+            );
+            div.appendChild(grid);
+          }
+          container.appendChild(div);
+        }
+      }
+    });
+  }
+
+  function addGridListener() {
+    nextTick(() => {
+      for (let i = 1; i <= gridHeight.value; i++) {
+        for (let j = 1; j <= gridWidth.value; j++) {
           const grid = document.getElementById(`grid-${i}-${j}`) as HTMLElement;
-          grid.classList.add("gridCol");
-          grid.addEventListener(events.mouse.down, (e: any) => {
-            draw.value = true;
-            if (erase.value) {
-              grid.style.backgroundColor = "transparent";
-            } else {
-              grid.style.backgroundColor = colorValue.value;
-            }
-          });
-
-          grid.addEventListener(events.mouse.move, (e: any) => {
-            let elementId = (
-              document.elementFromPoint(e.clientX, e.clientY) as Element
-            ).id;
-            checker(elementId);
-          });
-
-          grid.addEventListener(events.mouse.up, (e: any) => {
-            draw.value = false;
-          });
+          if (grid) {
+            grid.classList.add("gridCol");
+            grid.addEventListener(events.mouse.down, (e: any) => {
+              draw.value = true;
+              if (erase.value) {
+                grid.style.backgroundColor = "transparent";
+              } else {
+                grid.style.backgroundColor = colorValue.value;
+              }
+            });
+            grid.addEventListener(events.mouse.move, (e: any) => {
+              console.log(JSON.stringify(e));
+              let elementId = (
+                document.elementFromPoint(e.clientX, e.clientY) as Element
+              ).id;
+              checker(elementId);
+            });
+            grid.addEventListener(events.mouse.up, (e: any) => {
+              draw.value = false;
+            });
+          } else {
+            console.warn(`Grid-${i}-${j} not found`);
+          }
         }
       }
     });
@@ -67,7 +95,10 @@ export function usePainting() {
   }
 
   function clearGrid() {
-    isCreateGrid.value = false;
+    const container = document.getElementById("grid-container");
+    if (container) {
+      container.innerHTML = "";
+    }
   }
 
   function handleErase() {
@@ -89,5 +120,9 @@ export function usePainting() {
     handleErase,
     handlePaint,
     isCreateGrid,
+    draw,
+    erase,
+    checker,
+    addGridListener,
   };
 }

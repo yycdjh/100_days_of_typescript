@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="flex items-center justify-center">
-        <el-button class="flex-1 m-10" @click="createGrid"
+        <el-button class="flex-1 m-10" @click="handleCreateGrid"
           >Create Grid</el-button
         >
         <el-button class="flex-1 m-10" @click="clearGrid">Clear Grid</el-button>
@@ -30,18 +30,7 @@
         <el-button class="flex-1 m-10" @click="handlePaint">Paint</el-button>
       </div>
     </div>
-    <div class="w-3/4 flex flex-col p-5 bg-white" v-if="isCreateGrid">
-      <div class="flex" v-for="i in gridHeight" :key="i">
-        <div
-          v-for="j in gridWidth"
-          :key="j"
-          class="flex w-4 h-4 border border-gray-300"
-          :style="{ backgroundColor: 'transparent' }"
-          :ref="`grid-${i}-${j}`"
-          :id="`grid-${i}-${j}`"
-        ></div>
-      </div>
-    </div>
+    <div id="grid-container" class="w-3/4 flex flex-col p-5 bg-white"></div>
   </div>
 </template>
 
@@ -56,8 +45,13 @@ const {
   clearGrid,
   handleErase,
   handlePaint,
-  isCreateGrid,
+  addGridListener,
 } = usePainting();
+
+function handleCreateGrid() {
+  createGrid();
+  addGridListener();
+}
 </script>
 
 <style scoped></style>
