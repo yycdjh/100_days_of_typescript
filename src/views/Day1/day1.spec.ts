@@ -106,41 +106,35 @@ describe("createGrid", () => {
     expect(grid.style.backgroundColor).toBe("#ffffff");
   });
 
-  // test("should call checker on mouse move event", async () => {
-  //   const {
-  //     gridHeight,
-  //     gridWidth,
-  //     colorValue,
-  //     erase,
-  //     draw,
-  //     createGrid,
-  //     addGridListener,
-  //   } = usePainting();
-  //   gridHeight.value = 10;
-  //   gridWidth.value = 10;
-  //   colorValue.value = "#ffffff";
-  //   erase.value = false;
+  test("should call checker on mouse move event", async () => {
+    const {
+      gridHeight,
+      gridWidth,
+      colorValue,
+      erase,
+      draw,
+      createGrid,
+      addGridListener,
+      checker,
+    } = usePainting();
+    gridHeight.value = 10;
+    gridWidth.value = 10;
+    colorValue.value = "#ffffff";
+    erase.value = false;
 
-  //   createGrid();
-  //   await nextTick();
-  //   addGridListener();
-  //   await nextTick();
+    createGrid();
+    await nextTick();
+    addGridListener();
+    await nextTick();
 
-  //   const grid = document.getElementById(`grid-1-1`) as HTMLElement;
-  //   const grid2 = document.getElementById(`grid-1-2`) as HTMLElement;
-  //   const rect = grid2.getBoundingClientRect();
-  //   const clientX = rect.left;
-  //   const clientY = rect.top;
-  //   console.log(JSON.stringify(grid2));
-  //   const event = new MouseEvent("mousedown", { bubbles: true });
-  //   const event2 = new MouseEvent("mousemove", {
-  //     bubbles: true,
-  //     clientX,
-  //     clientY,
-  //   });
-  //   grid.dispatchEvent(event);
-  //   grid2.dispatchEvent(event2);
+    const grid = document.getElementById(`grid-1-1`) as HTMLElement;
+    const event = new MouseEvent("mousedown", { bubbles: true });
+    grid.dispatchEvent(event);
 
-  //   expect(grid2.style.backgroundColor).toBe("#ffffff");
-  // });
+    checker("grid-2-1");
+    await nextTick();
+    const grid2 = document.getElementById(`grid-2-1`) as HTMLElement;
+
+    expect(grid2.style.backgroundColor).toBe("#ffffff");
+  });
 });
