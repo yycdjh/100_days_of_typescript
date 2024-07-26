@@ -63,7 +63,6 @@ export function usePainting() {
               }
             });
             grid.addEventListener(events.mouse.move, (e: any) => {
-              console.log(JSON.stringify(e));
               let elementId = (
                 document.elementFromPoint(e.clientX, e.clientY) as Element
               ).id;
