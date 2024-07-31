@@ -3,88 +3,95 @@
     class="container h-full w-full flex flex-col items-center justify-center bg-green-100"
   >
     <div class="w-3/4 p-5 pt-10 flex flex-col bg-white">
-      <div
-        class="button-layout flex flex-col w-full justify-center items-center"
-      >
-        <div>
-          <el-button link>
+      <div class="button-layout flex flex-col w-full ml-3">
+        <div class="flex felx-wrap gap-4">
+          <el-button
+            link
+            id="bold"
+            class="active"
+            @click="handleOptions('bold')"
+          >
             <template #icon>
               <i class="fa-solid fa-bold"></i>
             </template>
           </el-button>
-          <el-button link>
+          <el-button
+            link
+            id="superscript"
+            @click="handleOptions('superscript')"
+          >
             <template #icon>
               <i class="fa-solid fa-superscript"></i>
             </template>
           </el-button>
-          <el-button link>
+          <el-button link id="subscript" @click="handleOptions('subscript')">
             <template #icon>
               <i class="fa-solid fa-subscript"></i>
             </template>
           </el-button>
-          <el-button link>
+          <el-button link id="insertOrderedList">
             <template #icon>
               <div class="fa-solid fa-list-ol"></div>
             </template>
           </el-button>
-          <el-button link>
+          <el-button link id="insertUnorderedList">
             <template #icon>
               <i class="fa-solid fa-list"></i>
             </template>
           </el-button>
-          <el-button link>
+          <el-button link id="undo">
             <template #icon>
               <i class="fa-solid fa-rotate-left"></i>
             </template>
           </el-button>
-          <el-button link>
+          <el-button link id="redo">
             <template #icon>
               <i class="fa-solid fa-rotate-right"></i>
             </template>
           </el-button>
-          <el-button link>
+          <el-button link id="createLink">
             <template #icon>
               <i class="fa fa-link"></i>
             </template>
           </el-button>
-          <el-button link>
+          <el-button link id="unlink">
             <template #icon>
               <i class="fa fa-unlink"></i>
             </template>
           </el-button>
 
-          <el-button link>
+          <el-button link id="justifyLift">
             <template #icon>
               <i class="fa-solid fa-align-left"></i>
             </template>
           </el-button>
-          <el-button link>
+          <el-button link id="justifyCenter">
             <template #icon>
               <i class="fa-solid fa-align-center"></i>
             </template>
           </el-button>
-          <el-button link>
+          <el-button link id="justifyRight">
             <template #icon>
               <i class="fa-solid fa-align-right"></i>
             </template>
           </el-button>
-          <el-button link>
+          <el-button link id="justifyFull">
             <template #icon>
               <i class="fa-solid fa-align-justify"></i>
             </template>
           </el-button>
-          <el-button link>
+          <el-button link id="indent">
             <template #icon>
               <i class="fa-solid fa-indent"></i>
             </template>
           </el-button>
-          <el-button link>
+          <el-button link id="outdent">
             <template #icon>
               <i class="fa-solid fa-outdent"></i>
             </template>
           </el-button>
         </div>
-        <div class="flex">
+        <div class="flex felx-wrap gap-4 mt-2">
           <div class="w-20">
             <el-select v-model="formatBlock">
               <el-option
@@ -128,7 +135,7 @@
       </div>
 
       <div
-        class="text-input m-3 p-3 h-1/2 border border-solid border-1 border-custom-color"
+        class="text-input m-3 p-3 h-3/4 border border-solid border-1 border-custom-color"
         contenteditable="true"
       ></div>
     </div>
@@ -136,28 +143,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-
-const fontName = ref("Arial");
-const fontNameList = ref([
-  "Arial",
-  "Verdana",
-  "Times New Roman",
-  "Garamond",
-  "Georgia",
-  "Courier New",
-  "Cursive",
-]);
-
-const formatBlock = ref("H1");
-const formatBlockList = ref(["H1", "H2", "H3", "H4", "H5", "H6"]);
-
-const fontSize = ref(1);
-const fontSizeList = ref([1, 2, 3, 4, 5, 6, 7]);
-
-const foreColor = ref("red");
-
-const HighlightColor = ref("red");
+import { useRichEdit } from "./useRichEdit";
+const {
+  fontName,
+  fontNameList,
+  formatBlock,
+  formatBlockList,
+  fontSize,
+  fontSizeList,
+  foreColor,
+  HighlightColor,
+  handleOptions,
+} = useRichEdit();
 </script>
 
-<style scoped></style>
+<style scoped>
+.active {
+  background-color: #e0e9ff;
+}
+</style>
