@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <el-scrollbar height="100vh">
-      <el-menu default-active="1">
+      <el-menu :default-active="activeName">
         <template v-for="(item, index) in customRotues" :key="index">
           <el-menu-item :index="String(index + 1)" @click="goRoute(item.name)">
             <span> {{ item.name }}</span>
@@ -14,11 +14,20 @@
 
 <script setup lang="ts">
 import { mapMenusToRotes } from "@/utils/map-menus";
-import { useRouter } from "vue-router";
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 const customRotues = mapMenusToRotes();
 
 const $router = useRouter();
+const $route = useRoute();
+
+const activeName = computed(() => {
+  return String(
+    customRotues.findIndex((item) => item.name === $route.name) + 1
+  );
+});
+console.log(activeName.value);
 const goRoute = (name: string) => {
   $router.push({
     name,
