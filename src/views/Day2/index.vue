@@ -29,12 +29,20 @@
               <i class="fa-solid fa-subscript"></i>
             </template>
           </el-button>
-          <el-button link id="insertOrderedList">
+          <el-button
+            link
+            id="insertOrderedList"
+            @click="handleOptions('insertOrderedList')"
+          >
             <template #icon>
               <div class="fa-solid fa-list-ol"></div>
             </template>
           </el-button>
-          <el-button link id="insertUnorderedList">
+          <el-button
+            link
+            id="insertUnorderedList"
+            @click="handleOptions('insertUnorderedList')"
+          >
             <template #icon>
               <i class="fa-solid fa-list"></i>
             </template>
