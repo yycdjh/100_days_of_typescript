@@ -26,16 +26,12 @@ export function useRichEdit() {
 
   const highlighter = () => {};
 
-  const modifyText = (
-    command: string,
-    defaultUi: boolean,
-    value: string | undefined
-  ) => {
+  const modifyText = (command: string, defaultUi: boolean, value: any) => {
     document.execCommand(command, defaultUi, value);
   };
 
   function handleOptions(type: string) {
-    modifyText(type, false, undefined);
+    modifyText(type, false, null);
   }
 
   return {
