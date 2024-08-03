@@ -27,7 +27,7 @@ const activeName = computed(() => {
     customRotues.findIndex((item) => item.name === $route.name) + 1
   );
 });
-console.log(activeName.value);
+// console.log(activeName.value);
 const goRoute = (name: string) => {
   $router.push({
     name,
