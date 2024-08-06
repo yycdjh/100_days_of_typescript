@@ -142,15 +142,13 @@
         </div>
       </div>
 
-      <div id="text-input" contenteditable="true" ref="editor"></div>
+      <div id="text-input" contenteditable="true"></div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { useRichEdit } from "./useRichEdit";
-const editor = ref();
 const {
   fontName,
   fontNameList,
@@ -161,7 +159,7 @@ const {
   foreColor,
   HighlightColor,
   handleOptions,
-} = useRichEdit(editor);
+} = useRichEdit();
 </script>
 
 <style scoped>
