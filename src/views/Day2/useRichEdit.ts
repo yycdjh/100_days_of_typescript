@@ -27,6 +27,7 @@ export function useRichEdit() {
   const highlighter = () => {};
 
   const modifyText = (command: string, defaultUi: boolean, value: any) => {
+    // insertOrderedList 不生效 待处理
     document.execCommand(command, defaultUi, value);
   };
 
